@@ -1,0 +1,9 @@
+target/
+.classpath
+.project
+.settings/
+
+
+# OS generated files #
+######################
+.DS_Store
