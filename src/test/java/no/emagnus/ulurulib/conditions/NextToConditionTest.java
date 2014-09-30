@@ -1,6 +1,10 @@
-package no.emagnus.ulurulib;
+package no.emagnus.ulurulib.conditions;
 
 import static org.fest.assertions.Assertions.assertThat;
+import no.emagnus.ulurulib.PieceColor;
+import no.emagnus.ulurulib.PieceConfiguration;
+import no.emagnus.ulurulib.conditions.Condition;
+import no.emagnus.ulurulib.conditions.NextToCondition;
 
 import org.junit.Test;
 

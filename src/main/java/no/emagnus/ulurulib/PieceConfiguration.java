@@ -33,7 +33,7 @@ public class PieceConfiguration {
 	return pieces.indexOf(color);
     }
     
-    static PieceConfiguration emptyConfiguration() {
+    public static PieceConfiguration emptyConfiguration() {
 	return new PieceConfiguration(Arrays.<PieceColor>asList(null, null, null, null, null, null, null, null));
     }
 }

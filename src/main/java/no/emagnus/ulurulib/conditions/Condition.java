@@ -1,4 +1,7 @@
-package no.emagnus.ulurulib;
+package no.emagnus.ulurulib.conditions;
+
+import no.emagnus.ulurulib.PieceColor;
+import no.emagnus.ulurulib.PieceConfiguration;
 
 public abstract class Condition {
 
