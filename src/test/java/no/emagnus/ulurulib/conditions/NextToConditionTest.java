@@ -17,7 +17,7 @@ public class NextToConditionTest {
 	conf.setPos(1, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
     
     @Test
@@ -27,7 +27,7 @@ public class NextToConditionTest {
 	conf.setPos(2, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test
@@ -37,7 +37,7 @@ public class NextToConditionTest {
 	conf.setPos(3, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test
@@ -47,7 +47,7 @@ public class NextToConditionTest {
 	conf.setPos(5, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test(expected = IllegalArgumentException.class)

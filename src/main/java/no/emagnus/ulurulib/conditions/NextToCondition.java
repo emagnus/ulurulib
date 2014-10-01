@@ -13,7 +13,7 @@ public class NextToCondition extends Condition {
     }
 
     @Override
-    public boolean isMet(PieceConfiguration conf) {
+    public boolean isMetSpecifically(PieceConfiguration conf) {
 	int affectedPos = conf.posOf(affected);
 	int otherPos = conf.posOf(other);
 	if(Math.abs(affectedPos - otherPos) != 1) {

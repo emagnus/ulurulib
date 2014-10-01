@@ -15,7 +15,7 @@ public class ConfigurationEvaluator {
     public int evaluate(PieceConfiguration conf) {
 	int conditionsMet = 0;
 	for (Condition condition : conditions) {
-	    if(condition.isMet(conf)) {
+	    if(condition.isMetSpecifically(conf)) {
 		conditionsMet++;
 	    }
 	}

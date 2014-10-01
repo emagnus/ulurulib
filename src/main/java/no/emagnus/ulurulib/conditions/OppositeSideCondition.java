@@ -22,7 +22,7 @@ public class OppositeSideCondition extends Condition {
     }
 
     @Override
-    public boolean isMet(PieceConfiguration conf) {
+    public boolean isMetSpecifically(PieceConfiguration conf) {
 	int posOfAffected = conf.posOf(affected);
 	int posOfOther = conf.posOf(other);
 	return validOppositePositions.get(posOfAffected).contains(posOfOther);

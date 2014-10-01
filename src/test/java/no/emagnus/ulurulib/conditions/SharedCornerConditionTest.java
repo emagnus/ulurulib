@@ -15,7 +15,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(3, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
     
     @Test
@@ -25,7 +25,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(4, PieceColor.GREEN);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
     
     @Test
@@ -35,7 +35,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(6, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
     
     @Test
@@ -45,18 +45,9 @@ public class SharedCornerConditionTest {
 	conf.setPos(0, PieceColor.GREEN);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
     
-    @Test
-    public void should_be_met_if_same_color_and_present() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
-	conf.setPos(1, PieceColor.GREEN);
-	
-	Condition cond = new SharedCornerCondition(PieceColor.GREEN, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isTrue();
-    }
-
     @Test
     public void should_not_be_met_if_pieces_are_on_opposite_sides() {
 	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
@@ -64,7 +55,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(5, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test
@@ -74,7 +65,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(2, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test(expected = IllegalArgumentException.class)

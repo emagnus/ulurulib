@@ -14,7 +14,7 @@ public class NoConditionTest {
 	conf.setPos(5, PieceColor.BLACK);
 	
 	Condition cond = new NoCondition(PieceColor.BLACK);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
 
 }

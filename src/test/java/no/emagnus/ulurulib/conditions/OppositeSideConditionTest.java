@@ -15,7 +15,7 @@ public class OppositeSideConditionTest {
 	conf.setPos(7, PieceColor.BLUE);
 	
 	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isTrue();
+	assertThat(cond.isMetSpecifically(conf)).isTrue();
     }
     
     @Test
@@ -25,7 +25,7 @@ public class OppositeSideConditionTest {
 	conf.setPos(7, PieceColor.BLUE);
 	
 	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test
@@ -35,7 +35,7 @@ public class OppositeSideConditionTest {
 	conf.setPos(6, PieceColor.BLUE);
 	
 	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMet(conf)).isFalse();
+	assertThat(cond.isMetSpecifically(conf)).isFalse();
     }
     
     @Test(expected = IllegalArgumentException.class)

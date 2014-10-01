@@ -17,7 +17,7 @@ public class SharedCornerCondition extends Condition {
     }
 
     @Override
-    public boolean isMet(PieceConfiguration conf) {
+    public boolean isMetSpecifically(PieceConfiguration conf) {
 	if(conf.posOf(affected) != -1 && affected == other) {
 	    return true;
 	}

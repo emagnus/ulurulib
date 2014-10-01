@@ -10,7 +10,7 @@ public class NoCondition extends Condition {
     }
 
     @Override
-    public boolean isMet(PieceConfiguration conf) {
+    public boolean isMetSpecifically(PieceConfiguration conf) {
 	return true;
     }
 

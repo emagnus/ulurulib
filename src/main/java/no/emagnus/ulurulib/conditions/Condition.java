@@ -16,5 +16,12 @@ public abstract class Condition {
 	this.other = other;
     }
     
-    public abstract boolean isMet(PieceConfiguration conf);
+    public boolean isMet(PieceConfiguration conf) {
+	if(conf.posOf(affected) != -1 && affected == other) {
+	    return true;
+	}
+	return isMetSpecifically(conf);
+    }
+    
+    public abstract boolean isMetSpecifically(PieceConfiguration conf);
 }
