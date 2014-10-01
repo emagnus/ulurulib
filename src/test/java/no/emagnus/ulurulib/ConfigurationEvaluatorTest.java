@@ -26,8 +26,9 @@ public class ConfigurationEvaluatorTest {
     @Test
     public void should_return_0_when_no_conditions_are_met() {
 	Condition conditionWhichIsNotMet = new NextToCondition(PieceColor.RED, PieceColor.GREEN);
+	SetOfConditions conditions = new SetOfConditions(Arrays.asList(conditionWhichIsNotMet));
 	
-	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(Arrays.asList(conditionWhichIsNotMet));
+	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(conditions);
 	
 	int conditionsMet = evaluator.evaluate(configuration);
 	assertThat(conditionsMet).isEqualTo(0);
@@ -37,8 +38,9 @@ public class ConfigurationEvaluatorTest {
     public void should_return_1_when_1_condition_is_met() {
 	Condition conditionWhichIsMet = new NextToCondition(PieceColor.BLUE, PieceColor.GREEN);
 	Condition conditionWhichIsNotMet = new NextToCondition(PieceColor.RED, PieceColor.GREEN);
+	SetOfConditions conditions = new SetOfConditions(Arrays.asList(conditionWhichIsMet, conditionWhichIsNotMet));
 	
-	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(Arrays.asList(conditionWhichIsMet, conditionWhichIsNotMet));
+	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(conditions);
 	
 	int conditionsMet = evaluator.evaluate(configuration);
 	assertThat(conditionsMet).isEqualTo(1);
@@ -49,10 +51,10 @@ public class ConfigurationEvaluatorTest {
 	Condition conditionWhichIsMet1 = new NextToCondition(PieceColor.BLUE, PieceColor.GREEN);
 	Condition conditionWhichIsMet2 = new OppositeSideCondition(PieceColor.RED, PieceColor.YELLOW);
 	Condition conditionWhichIsMet3 = new NoCondition(PieceColor.PINK);
-	Condition conditionWhichIsNotMet = new NextToCondition(PieceColor.RED, PieceColor.GREEN);
+	Condition conditionWhichIsNotMet = new NextToCondition(PieceColor.BLACK, PieceColor.GREEN);
 	
 	List<Condition> conditions = Arrays.asList(conditionWhichIsMet1, conditionWhichIsMet2, conditionWhichIsMet3, conditionWhichIsNotMet);
-	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(conditions);
+	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(new SetOfConditions(conditions));
 	
 	int conditionsMet = evaluator.evaluate(configuration);
 	assertThat(conditionsMet).isEqualTo(3);

@@ -28,5 +28,10 @@ public class NextToCondition extends Condition {
 	}
 	return true;
     }
+    
+    @Override
+    public String toString() {
+        return affected + " next to " + other;
+    }
 
 }

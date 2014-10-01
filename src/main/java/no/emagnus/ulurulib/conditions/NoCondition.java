@@ -13,5 +13,10 @@ public class NoCondition extends Condition {
     public boolean isMetSpecifically(PieceConfiguration conf) {
 	return conf.isPresent(affected);
     }
+    
+    @Override
+    public String toString() {
+        return affected + " is happy wherever";
+    }
 
 }

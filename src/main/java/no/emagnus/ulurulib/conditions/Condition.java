@@ -10,7 +10,7 @@ public abstract class Condition {
 
     public Condition(PieceColor affected, PieceColor other) {
 	if(affected == null) {
-	    throw new IllegalArgumentException("Afftected piece cannot be null.");
+	    throw new IllegalArgumentException("Affected piece cannot be null.");
 	}
 	this.affected = affected;
 	this.other = other;
@@ -24,4 +24,8 @@ public abstract class Condition {
     }
     
     public abstract boolean isMetSpecifically(PieceConfiguration conf);
+    
+    public PieceColor getAffected() {
+	return affected;
+    }
 }

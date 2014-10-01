@@ -27,6 +27,11 @@ public class OppositeSideCondition extends Condition {
 	int posOfOther = conf.posOf(other);
 	return validOppositePositions.get(posOfAffected).contains(posOfOther);
     }
+    
+    @Override
+    public String toString() {
+        return affected + " on the opposite side of " + other;
+    }
 
     private Map<Integer, List<Integer>> createValidOppositePositions() {
 	Map<Integer, List<Integer>> map = new HashMap<>();

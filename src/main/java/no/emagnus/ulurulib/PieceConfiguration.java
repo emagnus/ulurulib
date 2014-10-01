@@ -40,4 +40,13 @@ public class PieceConfiguration {
     public static PieceConfiguration emptyConfiguration() {
 	return new PieceConfiguration(Arrays.<PieceColor>asList(null, null, null, null, null, null, null, null));
     }
+    
+    @Override
+    public String toString() {
+        return String.format("   %s  %s  %s     \n", getPos(0), getPos(1), getPos(2)) + 
+        	String.format("%s              %s\n", getPos(7), getPos(3)) + 
+        	String.format("%s                \n", getPos(6)) +
+        	String.format("    %s  %s        ", getPos(5), getPos(4));
+    }
+    
 }

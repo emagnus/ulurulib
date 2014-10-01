@@ -37,5 +37,10 @@ public class SharedCornerCondition extends Condition {
 	
 	return false;
     }
+    
+    @Override
+    public String toString() {
+        return affected + " shares a corner with " + other;
+    }
 
 }
