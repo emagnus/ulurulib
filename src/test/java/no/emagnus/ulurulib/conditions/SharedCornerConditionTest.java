@@ -4,13 +4,20 @@ import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class SharedCornerConditionTest {
+    
+    private PieceConfiguration conf;
+    
+    @Before
+    public void setup() {
+	conf = PieceConfiguration.emptyConfiguration();
+    }
 
     @Test
     public void should_be_met_if_pieces_sharing_ne_corner() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(2, PieceColor.GREEN);
 	conf.setPos(3, PieceColor.BLUE);
 	
@@ -20,7 +27,6 @@ public class SharedCornerConditionTest {
     
     @Test
     public void should_be_met_if_pieces_sharing_se_corner() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(3, PieceColor.BLUE);
 	conf.setPos(4, PieceColor.GREEN);
 	
@@ -30,7 +36,6 @@ public class SharedCornerConditionTest {
     
     @Test
     public void should_be_met_if_pieces_sharing_sw_corner() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(5, PieceColor.GREEN);
 	conf.setPos(6, PieceColor.BLUE);
 	
@@ -40,7 +45,6 @@ public class SharedCornerConditionTest {
     
     @Test
     public void should_be_met_if_pieces_sharing_nw_corner() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(7, PieceColor.BLUE);
 	conf.setPos(0, PieceColor.GREEN);
 	
@@ -50,7 +54,6 @@ public class SharedCornerConditionTest {
     
     @Test
     public void should_not_be_met_if_pieces_are_on_opposite_sides() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(0, PieceColor.GREEN);
 	conf.setPos(5, PieceColor.BLUE);
 	
@@ -60,7 +63,6 @@ public class SharedCornerConditionTest {
     
     @Test
     public void should_not_be_met_if_pieces_are_neighbours() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(1, PieceColor.GREEN);
 	conf.setPos(2, PieceColor.BLUE);
 	

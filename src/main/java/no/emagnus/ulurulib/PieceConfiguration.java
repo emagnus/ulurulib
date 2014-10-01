@@ -33,6 +33,10 @@ public class PieceConfiguration {
 	return pieces.indexOf(color);
     }
     
+    public boolean isPresent(PieceColor color) {
+	return pieces.contains(color);
+    }
+    
     public static PieceConfiguration emptyConfiguration() {
 	return new PieceConfiguration(Arrays.<PieceColor>asList(null, null, null, null, null, null, null, null));
     }

@@ -4,13 +4,20 @@ import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class OppositeSideConditionTest {
+    
+    private PieceConfiguration conf;
+    
+    @Before
+    public void setup() {
+	conf = PieceConfiguration.emptyConfiguration();
+    }
 
     @Test
     public void should_be_met_if_other_color_on_opposite_short_side() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(3, PieceColor.BLACK);
 	conf.setPos(7, PieceColor.BLUE);
 	
@@ -20,7 +27,6 @@ public class OppositeSideConditionTest {
     
     @Test
     public void should_not_be_met_if_other_color_on_same_side() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(6, PieceColor.BLACK);
 	conf.setPos(7, PieceColor.BLUE);
 	
@@ -30,7 +36,6 @@ public class OppositeSideConditionTest {
     
     @Test
     public void should_not_be_met_if_other_color_on_adjacent_side() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(5, PieceColor.BLACK);
 	conf.setPos(6, PieceColor.BLUE);
 	

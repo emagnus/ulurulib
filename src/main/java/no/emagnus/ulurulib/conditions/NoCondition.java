@@ -11,7 +11,7 @@ public class NoCondition extends Condition {
 
     @Override
     public boolean isMetSpecifically(PieceConfiguration conf) {
-	return true;
+	return conf.isPresent(affected);
     }
 
 }

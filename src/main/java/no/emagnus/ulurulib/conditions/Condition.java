@@ -17,7 +17,7 @@ public abstract class Condition {
     }
     
     public boolean isMet(PieceConfiguration conf) {
-	if(conf.posOf(affected) != -1 && affected == other) {
+	if(conf.isPresent(affected) && affected == other) {
 	    return true;
 	}
 	return isMetSpecifically(conf);
