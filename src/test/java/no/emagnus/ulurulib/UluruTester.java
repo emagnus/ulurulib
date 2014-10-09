@@ -9,6 +9,7 @@ import java.util.Random;
 import no.emagnus.ulurulib.conditions.Condition;
 import no.emagnus.ulurulib.conditions.NextToCondition;
 import no.emagnus.ulurulib.conditions.NoCondition;
+import no.emagnus.ulurulib.conditions.OppositeOfCondition;
 import no.emagnus.ulurulib.conditions.OppositeSideCondition;
 import no.emagnus.ulurulib.conditions.PositionCondition;
 import no.emagnus.ulurulib.conditions.SharedCornerCondition;
@@ -16,18 +17,53 @@ import no.emagnus.ulurulib.conditions.SharedCornerCondition;
 public class UluruTester {
 
     public static void main(String[] args) {
+	singleGame();
+    }
+    
+    // Run n random piece configurations (possibly duplicates) with the same conditions
+    // Print the best one (first one if several are equally good)
+    static void multipleGames(int n) {
+	SetOfConditions conditions = generateConditions();
+	PieceConfiguration bestConf = null;
+
+	int bestResult = -1;
+	for(int i=0; i<n-1; i++) {
+	    BoardContext board = new BoardContext(generateRandomConfiguration(), conditions);
+	    EvaluationResult result = board.evaluate();
+	    int numberOfConditionsMet = result.getNumberOfConditionsMet();
+	    if(numberOfConditionsMet > bestResult) {
+		bestConf = board.getPieceConfiguration();
+		bestResult = numberOfConditionsMet; 
+	    }
+	}
+	
+	System.out.println("CONDITIONS");
+	System.out.println(conditions);
+	System.out.println("\n");
+	System.out.println("Best configuration out of " + n + ": ");
+	System.out.println(bestConf);
+	System.out.println("\n");
+	System.out.println(new BoardContext(bestConf, conditions).evaluate());
+    }
+    
+    // Run a single random game of Uluru
+    static void singleGame() {
 	SetOfConditions conditions = generateConditions();
 	PieceConfiguration conf = generateRandomConfiguration();
+	
+	BoardContext board = new BoardContext(conf, conditions);
 	
 	System.out.println("RANDOM GAME OF ULURU :D");
 	System.out.println("-----------------------\n");
 	System.out.println(conf);
 	System.out.println("\n");
 	System.out.println(conditions);
-	
-	ConfigurationEvaluator evaluator = new ConfigurationEvaluator(conditions);
-	int conditionsMet = evaluator.evaluate(conf);
-	System.out.println("Conditions met: " + conditionsMet);
+	System.out.println("\n");
+
+	System.out.println("RESULT");
+	System.out.println("-----------------------\n");
+	EvaluationResult result = board.evaluate();
+	System.out.println(result);
     }
 
     private static PieceConfiguration generateRandomConfiguration() {
@@ -74,6 +110,8 @@ public class UluruTester {
 	    case 7:
 		conditions.add(new SharedCornerCondition(color, PieceColor
 			.random()));
+	    case 8:
+		conditions.add(new OppositeOfCondition(color, PieceColor.random()));
 		break;
 
 	    default:

@@ -1,7 +1,7 @@
 package no.emagnus.ulurulib.conditions;
 
+import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
-import no.emagnus.ulurulib.PieceConfiguration;
 
 public class NoCondition extends Condition {
 
@@ -10,8 +10,8 @@ public class NoCondition extends Condition {
     }
 
     @Override
-    public boolean isMetSpecifically(PieceConfiguration conf) {
-	return conf.isPresent(affected);
+    public boolean isMetSpecifically(BoardContext context) {
+	return context.isPresent(affected);
     }
     
     @Override

@@ -1,28 +1,18 @@
 package no.emagnus.ulurulib.conditions;
 
-import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
-import no.emagnus.ulurulib.PieceConfiguration;
 
-import org.junit.Before;
 import org.junit.Test;
 
-public class SharedCornerConditionTest {
+public class SharedCornerConditionTest extends AbstractConditionTest {
     
-    private PieceConfiguration conf;
-    
-    @Before
-    public void setup() {
-	conf = PieceConfiguration.emptyConfiguration();
-    }
-
     @Test
     public void should_be_met_if_pieces_sharing_ne_corner() {
 	conf.setPos(2, PieceColor.GREEN);
 	conf.setPos(3, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -31,7 +21,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(4, PieceColor.GREEN);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -40,7 +30,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(6, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -49,7 +39,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(0, PieceColor.GREEN);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -58,7 +48,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(5, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
@@ -67,7 +57,7 @@ public class SharedCornerConditionTest {
 	conf.setPos(2, PieceColor.BLUE);
 	
 	Condition cond = new SharedCornerCondition(PieceColor.BLUE, PieceColor.GREEN);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test(expected = IllegalArgumentException.class)

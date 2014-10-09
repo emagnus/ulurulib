@@ -1,53 +1,45 @@
 package no.emagnus.ulurulib.conditions;
 
-import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
-import no.emagnus.ulurulib.PieceConfiguration;
-import no.emagnus.ulurulib.conditions.Condition;
-import no.emagnus.ulurulib.conditions.NextToCondition;
 
 import org.junit.Test;
 
-public class NextToConditionTest {
+public class NextToConditionTest extends AbstractConditionTest {
     
     @Test
     public void should_be_met_if_affected_piece_is_next_to_other_piece_on_north_side() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(0, PieceColor.BLACK);
 	conf.setPos(1, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
     public void should_not_be_met_if_affected_piece_is_not_next_to_other_piece_on_north_side() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(0, PieceColor.BLACK);
 	conf.setPos(2, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
     public void should_not_be_met_if_pieces_next_to_eachother_in_ne_corner() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(2, PieceColor.BLACK);
 	conf.setPos(3, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
     public void should_not_be_met_if_pieces_on_different_sides() {
-	PieceConfiguration conf = PieceConfiguration.emptyConfiguration();
 	conf.setPos(2, PieceColor.BLACK);
 	conf.setPos(5, PieceColor.BLUE);
 	
 	Condition cond = new NextToCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test(expected = IllegalArgumentException.class)

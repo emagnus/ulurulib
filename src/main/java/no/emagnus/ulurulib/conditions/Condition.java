@@ -1,7 +1,7 @@
 package no.emagnus.ulurulib.conditions;
 
+import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
-import no.emagnus.ulurulib.PieceConfiguration;
 
 public abstract class Condition {
 
@@ -16,14 +16,14 @@ public abstract class Condition {
 	this.other = other;
     }
     
-    public boolean isMet(PieceConfiguration conf) {
-	if(conf.isPresent(affected) && affected == other) {
+    public boolean isMet(BoardContext context) {
+	if(context.isPresent(affected) && affected == other) {
 	    return true;
 	}
-	return isMetSpecifically(conf);
+	return isMetSpecifically(context);
     }
     
-    public abstract boolean isMetSpecifically(PieceConfiguration conf);
+    public abstract boolean isMetSpecifically(BoardContext context);
     
     public PieceColor getAffected() {
 	return affected;

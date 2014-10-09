@@ -1,28 +1,18 @@
 package no.emagnus.ulurulib.conditions;
 
-import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
-import no.emagnus.ulurulib.PieceConfiguration;
 
-import org.junit.Before;
 import org.junit.Test;
 
-public class OppositeSideConditionTest {
+public class OppositeSideConditionTest extends AbstractConditionTest {
     
-    private PieceConfiguration conf;
-    
-    @Before
-    public void setup() {
-	conf = PieceConfiguration.emptyConfiguration();
-    }
-
     @Test
     public void should_be_met_if_other_color_on_opposite_short_side() {
 	conf.setPos(3, PieceColor.BLACK);
 	conf.setPos(7, PieceColor.BLUE);
 	
 	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -31,7 +21,7 @@ public class OppositeSideConditionTest {
 	conf.setPos(7, PieceColor.BLUE);
 	
 	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
@@ -40,7 +30,7 @@ public class OppositeSideConditionTest {
 	conf.setPos(6, PieceColor.BLUE);
 	
 	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test(expected = IllegalArgumentException.class)

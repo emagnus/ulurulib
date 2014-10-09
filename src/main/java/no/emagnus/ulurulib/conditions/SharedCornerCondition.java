@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
@@ -17,7 +18,8 @@ public class SharedCornerCondition extends Condition {
     }
 
     @Override
-    public boolean isMetSpecifically(PieceConfiguration conf) {
+    public boolean isMetSpecifically(BoardContext context) {
+	PieceConfiguration conf = context.getPieceConfiguration();
 	if(conf.posOf(affected) != -1 && affected == other) {
 	    return true;
 	}

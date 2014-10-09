@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
@@ -22,7 +23,8 @@ public class OppositeSideCondition extends Condition {
     }
 
     @Override
-    public boolean isMetSpecifically(PieceConfiguration conf) {
+    public boolean isMetSpecifically(BoardContext context) {
+	PieceConfiguration conf = context.getPieceConfiguration();
 	int posOfAffected = conf.posOf(affected);
 	int posOfOther = conf.posOf(other);
 	return validOppositePositions.get(posOfAffected).contains(posOfOther);

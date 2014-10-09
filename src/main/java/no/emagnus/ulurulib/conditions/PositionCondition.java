@@ -3,6 +3,7 @@ package no.emagnus.ulurulib.conditions;
 import java.util.Arrays;
 import java.util.List;
 
+import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
@@ -18,7 +19,8 @@ public class PositionCondition extends Condition {
     }
 
     @Override
-    public boolean isMetSpecifically(PieceConfiguration conf) {
+    public boolean isMetSpecifically(BoardContext context) {
+	PieceConfiguration conf = context.getPieceConfiguration();
 	return validPositions.contains(conf.posOf(affected));
     }
 

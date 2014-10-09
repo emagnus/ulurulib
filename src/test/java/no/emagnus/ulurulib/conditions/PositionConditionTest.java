@@ -1,27 +1,17 @@
 package no.emagnus.ulurulib.conditions;
 
-import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
-import no.emagnus.ulurulib.PieceConfiguration;
 
-import org.junit.Before;
 import org.junit.Test;
 
-public class PositionConditionTest {
+public class PositionConditionTest extends AbstractConditionTest {
 
-    private PieceConfiguration conf;
-    
-    @Before
-    public void setup() {
-	conf = PieceConfiguration.emptyConfiguration();
-    }
-    
     @Test
     public void should_be_met_if_in_big_boomerang() {
 	conf.setPos(0, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.bigBoomerang(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -29,7 +19,7 @@ public class PositionConditionTest {
 	conf.setPos(3, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.bigBoomerang(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
@@ -37,7 +27,7 @@ public class PositionConditionTest {
 	conf.setPos(3, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.smallBoomerang(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -45,7 +35,7 @@ public class PositionConditionTest {
 	conf.setPos(2, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.smallBoomerang(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
@@ -53,7 +43,7 @@ public class PositionConditionTest {
 	conf.setPos(3, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.shortSides(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -61,7 +51,7 @@ public class PositionConditionTest {
 	conf.setPos(2, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.shortSides(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test
@@ -69,7 +59,7 @@ public class PositionConditionTest {
 	conf.setPos(2, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.longSides(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isTrue();
+	assertThatConditionIsMetSpecifically(cond, true);
     }
     
     @Test
@@ -77,7 +67,7 @@ public class PositionConditionTest {
 	conf.setPos(3, PieceColor.BLACK);
 	
 	PositionCondition cond = PositionCondition.longSides(PieceColor.BLACK);
-	assertThat(cond.isMetSpecifically(conf)).isFalse();
+	assertThatConditionIsMetSpecifically(cond, false);
     }
 
 }

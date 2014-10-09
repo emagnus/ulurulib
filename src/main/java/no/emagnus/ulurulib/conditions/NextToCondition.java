@@ -1,5 +1,6 @@
 package no.emagnus.ulurulib.conditions;
 
+import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
@@ -13,7 +14,8 @@ public class NextToCondition extends Condition {
     }
 
     @Override
-    public boolean isMetSpecifically(PieceConfiguration conf) {
+    public boolean isMetSpecifically(BoardContext context) {
+	PieceConfiguration conf = context.getPieceConfiguration();
 	int affectedPos = conf.posOf(affected);
 	int otherPos = conf.posOf(other);
 	if(Math.abs(affectedPos - otherPos) != 1) {
