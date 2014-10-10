@@ -10,7 +10,7 @@ import no.emagnus.ulurulib.conditions.Condition;
 import no.emagnus.ulurulib.conditions.NextToCondition;
 import no.emagnus.ulurulib.conditions.NoCondition;
 import no.emagnus.ulurulib.conditions.OppositeOfCondition;
-import no.emagnus.ulurulib.conditions.OppositeSideCondition;
+import no.emagnus.ulurulib.conditions.AcrossFromCondition;
 import no.emagnus.ulurulib.conditions.PositionCondition;
 import no.emagnus.ulurulib.conditions.SharedCornerCondition;
 
@@ -92,7 +92,7 @@ public class UluruTester {
 		conditions.add(new NoCondition(color));
 		break;
 	    case 2:
-		conditions.add(new OppositeSideCondition(color, PieceColor
+		conditions.add(new AcrossFromCondition(color, PieceColor
 			.random()));
 		break;
 	    case 3:

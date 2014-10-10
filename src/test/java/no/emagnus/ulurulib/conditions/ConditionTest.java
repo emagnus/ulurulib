@@ -57,24 +57,24 @@ public class ConditionTest extends AbstractConditionTest {
 	new TestCondition(null, null);
     }
     
+    private void assertThatConditionIsMet(Condition condition, boolean isMet) {
+	BoardContext context = new BoardContext(conf, new SetOfConditions(Arrays.asList(condition)));
+	assertThat(condition.isMet(context)).isEqualTo(isMet);
+    }
+
     private static class TestCondition extends Condition {
 	
 	boolean isMetSpecifically = false;
-
+	
 	public TestCondition(PieceColor affected, PieceColor other) {
 	    super(affected, other);
 	}
-
+	
 	@Override
 	public boolean isMetSpecifically(BoardContext context) {
 	    return isMetSpecifically;
 	}
 	
-    }
-    
-    private void assertThatConditionIsMet(Condition condition, boolean isMet) {
-	BoardContext context = new BoardContext(conf, new SetOfConditions(Arrays.asList(condition)));
-	assertThat(condition.isMet(context)).isEqualTo(isMet);
     }
 
 }

@@ -4,14 +4,14 @@ import no.emagnus.ulurulib.PieceColor;
 
 import org.junit.Test;
 
-public class OppositeSideConditionTest extends AbstractConditionTest {
+public class AcrossFromConditionTest extends AbstractConditionTest {
     
     @Test
     public void should_be_met_if_other_color_on_opposite_short_side() {
 	conf.setPos(3, PieceColor.BLACK);
 	conf.setPos(7, PieceColor.BLUE);
 	
-	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
+	Condition cond = new AcrossFromCondition(PieceColor.BLACK, PieceColor.BLUE);
 	assertThatConditionIsMetSpecifically(cond, true);
     }
     
@@ -20,7 +20,7 @@ public class OppositeSideConditionTest extends AbstractConditionTest {
 	conf.setPos(6, PieceColor.BLACK);
 	conf.setPos(7, PieceColor.BLUE);
 	
-	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
+	Condition cond = new AcrossFromCondition(PieceColor.BLACK, PieceColor.BLUE);
 	assertThatConditionIsMetSpecifically(cond, false);
     }
     
@@ -29,13 +29,13 @@ public class OppositeSideConditionTest extends AbstractConditionTest {
 	conf.setPos(5, PieceColor.BLACK);
 	conf.setPos(6, PieceColor.BLUE);
 	
-	Condition cond = new OppositeSideCondition(PieceColor.BLACK, PieceColor.BLUE);
+	Condition cond = new AcrossFromCondition(PieceColor.BLACK, PieceColor.BLUE);
 	assertThatConditionIsMetSpecifically(cond, false);
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void should_not_accept_only_one_color() {
-	new OppositeSideCondition(PieceColor.BLACK, null);
+	new AcrossFromCondition(PieceColor.BLACK, null);
     }
 
 }

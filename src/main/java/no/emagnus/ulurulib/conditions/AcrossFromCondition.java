@@ -10,11 +10,11 @@ import no.emagnus.ulurulib.BoardContext;
 import no.emagnus.ulurulib.PieceColor;
 import no.emagnus.ulurulib.PieceConfiguration;
 
-public class OppositeSideCondition extends Condition {
+public class AcrossFromCondition extends Condition {
 
     private Map<Integer, List<Integer>> validOppositePositions;
     
-    public OppositeSideCondition(PieceColor affected, PieceColor other) {
+    public AcrossFromCondition(PieceColor affected, PieceColor other) {
 	super(affected, other);
 	if(other == null) {
 	    throw new IllegalArgumentException("Other piece cannot be null");
