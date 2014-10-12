@@ -32,23 +32,21 @@ public class SetOfConditions {
 	for(Entry<PieceColor, Condition> colorCondition : conditionPerColor.entrySet()) {
 	    PieceColor start = colorCondition.getKey();
 	    Condition cond = colorCondition.getValue();
-	    if(cycleColors.contains(start)) {
+	    if(!cond.isComplex() || cycleColors.contains(start)) {
 		continue;
 	    }
 	    
 	    Set<PieceColor> colorsInThisCycle = new HashSet<>();
 	    colorsInThisCycle.add(start);
-	    if(cond.isComplex()) {
-		PieceColor next = cond.getOther();
-		while (conditionPerColor.get(next).isComplex()) {
-		    colorsInThisCycle.add(next);
-		    if(colorsInThisCycle.contains(next)) {
-			cycleColors.addAll(colorsInThisCycle);
-			break;
-		    }
-		    next = conditionPerColor.get(next).getOther();
-		} 
-	    }
+	    PieceColor next = cond.getOther();
+	    while (conditionPerColor.get(next).isComplex()) {
+		colorsInThisCycle.add(next);
+		next = conditionPerColor.get(next).getOther();
+		if (colorsInThisCycle.contains(next)) {
+		    cycleColors.addAll(colorsInThisCycle);
+		    break;
+		}
+	    } 
 	}
 	
 	return cycleColors;
