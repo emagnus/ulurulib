@@ -67,7 +67,7 @@ public class ConditionTest extends AbstractConditionTest {
 	boolean isMetSpecifically = false;
 	
 	public TestCondition(PieceColor affected, PieceColor other) {
-	    super(affected, other);
+	    super(affected, other, false);
 	}
 	
 	@Override

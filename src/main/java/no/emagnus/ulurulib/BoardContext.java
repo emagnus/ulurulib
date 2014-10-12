@@ -2,6 +2,7 @@ package no.emagnus.ulurulib;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import no.emagnus.ulurulib.conditions.Condition;
 
@@ -16,13 +17,14 @@ public class BoardContext {
     }
     
     public EvaluationResult evaluate() {
+	Set<PieceColor> defaultsToBeingMet = conditions.detectCycles();
 	List<Condition> conditionsMet = new ArrayList<>();
 	List<Condition> conditionsNotMet = new ArrayList<>();
 	List<Condition> conditionsNA = new ArrayList<>();
 	for (PieceColor color : PieceColor.values()) {
 	    Condition condition = conditions.getCondition(color);
 	    if(pieceConfiguration.isPresent(color)) {
-		if(condition.isMet(this)) {
+		if(defaultsToBeingMet.contains(color) || condition.isMet(this)) {
 		    conditionsMet.add(condition);
 		} else {
 		    conditionsNotMet.add(condition);

@@ -6,7 +6,7 @@ import no.emagnus.ulurulib.PieceColor;
 public class TwoSpacesAwayCondition extends Condition {
 
     public TwoSpacesAwayCondition(PieceColor affected, PieceColor other) {
-	super(affected, other);
+	super(affected, other, false);
 	if(other == null) {
 	    throw new IllegalArgumentException("Other piece cannot be null");
 	}

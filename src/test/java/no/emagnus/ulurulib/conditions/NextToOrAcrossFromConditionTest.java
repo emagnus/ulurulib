@@ -1,5 +1,6 @@
 package no.emagnus.ulurulib.conditions;
 
+import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
 
 import org.junit.Test;
@@ -31,6 +32,12 @@ public class NextToOrAcrossFromConditionTest extends AbstractConditionTest {
 	
 	Condition cond = new NextToOrAcrossFromCondition(PieceColor.BLACK, PieceColor.BLUE);
 	assertThatConditionIsMetSpecifically(cond, true);
+    }
+    
+    @Test
+    public void should_not_be_complex() {
+	Condition cond = new NextToOrAcrossFromCondition(PieceColor.BLACK, PieceColor.WHITE);
+	assertThat(cond.isComplex()).isFalse();
     }
     
     @Test(expected = IllegalArgumentException.class)

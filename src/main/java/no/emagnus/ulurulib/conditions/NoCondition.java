@@ -6,7 +6,7 @@ import no.emagnus.ulurulib.PieceColor;
 public class NoCondition extends Condition {
 
     public NoCondition(PieceColor affected) {
-	super(affected, null);
+	super(affected, null, false);
     }
 
     @Override

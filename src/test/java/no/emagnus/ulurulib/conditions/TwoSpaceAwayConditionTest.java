@@ -1,5 +1,6 @@
 package no.emagnus.ulurulib.conditions;
 
+import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
 
 import org.junit.Test;
@@ -40,6 +41,12 @@ public class TwoSpaceAwayConditionTest extends AbstractConditionTest {
 	
 	TwoSpacesAwayCondition cond = new TwoSpacesAwayCondition(PieceColor.BLUE, PieceColor.BLACK);
 	assertThatConditionIsMetSpecifically(cond, false);
+    }
+    
+    @Test
+    public void should_not_be_complex() {
+	Condition cond = new TwoSpacesAwayCondition(PieceColor.BLUE, PieceColor.BLACK);
+	assertThat(cond.isComplex()).isFalse();
     }
     
     @Test(expected = IllegalArgumentException.class)

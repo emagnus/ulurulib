@@ -7,7 +7,7 @@ import no.emagnus.ulurulib.PieceConfiguration;
 public class NextToCondition extends Condition {
 
     public NextToCondition(PieceColor affected, PieceColor other) {
-	super(affected, other);
+	super(affected, other, false);
 	if(other == null) {
 	    throw new IllegalArgumentException("Other piece cannot be null");
 	}

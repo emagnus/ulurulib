@@ -41,6 +41,12 @@ public class OppositeOfConditionTest extends AbstractConditionTest {
 	
 	assertThat(cond.isMetSpecifically(context)).isFalse();
     }
+
+    @Test
+    public void should_be_complex() {
+	Condition cond = new OppositeOfCondition(PieceColor.BLACK, PieceColor.WHITE);
+	assertThat(cond.isComplex()).isTrue();
+    }
     
     @Test(expected = IllegalArgumentException.class)
     public void should_not_accept_only_one_color() {
@@ -52,7 +58,7 @@ public class OppositeOfConditionTest extends AbstractConditionTest {
 	boolean isMetSpecifically = false;
 	
 	public TestCondition(PieceColor affected, PieceColor other) {
-	    super(affected, other);
+	    super(affected, other, true);
 	}
 	
 	@Override

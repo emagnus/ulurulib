@@ -7,13 +7,15 @@ public abstract class Condition {
 
     protected final PieceColor affected;
     protected final PieceColor other;
+    private boolean complex;
 
-    public Condition(PieceColor affected, PieceColor other) {
+    public Condition(PieceColor affected, PieceColor other, boolean complex) {
 	if(affected == null) {
 	    throw new IllegalArgumentException("Affected piece cannot be null.");
 	}
 	this.affected = affected;
 	this.other = other;
+	this.complex = complex;
     }
     
     public boolean isMet(BoardContext context) {
@@ -28,4 +30,13 @@ public abstract class Condition {
     public PieceColor getAffected() {
 	return affected;
     }
+    
+    public PieceColor getOther() {
+	return other;
+    }
+
+    public boolean isComplex() {
+	return complex;
+    }
+
 }

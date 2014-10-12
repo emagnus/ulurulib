@@ -6,7 +6,7 @@ import no.emagnus.ulurulib.PieceColor;
 public class OppositeOfCondition extends Condition {
 
     public OppositeOfCondition(PieceColor affected, PieceColor other) {
-	super(affected, other);
+	super(affected, other, true);
 	if(other == null) {
 	    throw new IllegalArgumentException("Other piece cannot be null");
 	}

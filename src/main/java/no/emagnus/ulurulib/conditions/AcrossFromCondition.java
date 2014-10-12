@@ -15,7 +15,7 @@ public class AcrossFromCondition extends Condition {
     private Map<Integer, List<Integer>> validOppositePositions;
     
     public AcrossFromCondition(PieceColor affected, PieceColor other) {
-	super(affected, other);
+	super(affected, other, false);
 	if(other == null) {
 	    throw new IllegalArgumentException("Other piece cannot be null");
 	}

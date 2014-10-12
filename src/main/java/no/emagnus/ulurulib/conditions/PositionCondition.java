@@ -13,7 +13,7 @@ public class PositionCondition extends Condition {
     private String nickname;
 
     private PositionCondition(PieceColor affected, List<Integer> validPositions, String nickname) {
-	super(affected, null);
+	super(affected, null, false);
 	this.validPositions = validPositions;
 	this.nickname = nickname;
     }

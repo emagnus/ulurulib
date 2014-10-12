@@ -9,7 +9,7 @@ public class NextToOrAcrossFromCondition extends Condition {
     private final AcrossFromCondition acrossFromCondition;
 
     public NextToOrAcrossFromCondition(PieceColor affected, PieceColor other) {
-	super(affected, other);
+	super(affected, other, false);
 	if(other == null) {
 	    throw new IllegalArgumentException("Other piece cannot be null");
 	}

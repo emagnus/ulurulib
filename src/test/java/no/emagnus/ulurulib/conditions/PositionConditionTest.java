@@ -1,5 +1,6 @@
 package no.emagnus.ulurulib.conditions;
 
+import static org.fest.assertions.Assertions.assertThat;
 import no.emagnus.ulurulib.PieceColor;
 
 import org.junit.Test;
@@ -68,6 +69,19 @@ public class PositionConditionTest extends AbstractConditionTest {
 	
 	PositionCondition cond = PositionCondition.longSides(PieceColor.BLACK);
 	assertThatConditionIsMetSpecifically(cond, false);
+    }
+    
+    @Test
+    public void should_not_be_complex() {
+	Condition cond1 = PositionCondition.longSides(PieceColor.BLACK);
+	Condition cond2 = PositionCondition.shortSides(PieceColor.BLACK);
+	Condition cond3 = PositionCondition.smallBoomerang(PieceColor.BLACK);
+	Condition cond4 = PositionCondition.bigBoomerang(PieceColor.BLACK);
+	
+	assertThat(cond1.isComplex()).isFalse();
+	assertThat(cond2.isComplex()).isFalse();
+	assertThat(cond3.isComplex()).isFalse();
+	assertThat(cond4.isComplex()).isFalse();
     }
 
 }
